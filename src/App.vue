@@ -1,9 +1,9 @@
 <template>
   <div id="nav">
     <router-link :to="{ name: 'EventList' }">Events</router-link> |
-    <router-link :to="{ name: 'About' }">About You</router-link>
+    <router-link :to="{ name: 'EventCreate' }">Create</router-link>
+    <router-view :key="$route.fullPath" />
   </div>
-  <h1>Events for some reason</h1>
   <router-view />
 </template>
 

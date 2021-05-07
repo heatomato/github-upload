@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import EventService from  '../services/EventService.js'
+import { mapState }  from 'vuex'
 
 export default {
     name: 'EventDetails',
@@ -18,14 +18,8 @@ export default {
         }
     },
     created() {
-        // Fetch by id
-        EventService.getEvent(this.id)
-        .then( res => {
-            this.event = res.data
-        })
-        .catch( error => {
-            console.log(error)
-        })
+        this.$store.dispatch('fetchEvent', this,id)
     },
+    computed: mapState(['event'])
 }
 </script>

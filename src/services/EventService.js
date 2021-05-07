@@ -1,19 +1,22 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-    baseURL: 'https://my-json-server.typicode.com/heatomato/demo-events-data',
+    baseURL: 'http://localhost:3000',  //'https://my-json-server.typicode.com/heatomato/demo-events-data',
     withCredentials: false,
     headers: {
         Accept: 'application/json',
-        //'Content-type': 'application/json'
+        'Content-type': 'application/json'
     }
 })
 
 export default {
-    getEvents() {
-        return apiClient.get('/events');
+    getEvents(perPage, page) {
+        return apiClient.get('/events?_limit=' + perPage + '&_page=' + page);
     },
     getEvent(id) {
         return apiClient.get('/events/' + id);
+    },
+    postEvent(event) {
+        return apiClient.post('/events', event)
     }
 }
